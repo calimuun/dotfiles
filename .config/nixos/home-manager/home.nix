@@ -21,6 +21,7 @@
     ripdrag
     stow
     openjdk25
+    keepassxc
   ];
 
   programs.ssh = {

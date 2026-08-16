@@ -65,7 +65,7 @@
   users.users."calimuun" = {
     isNormalUser = true;
     description = "calimuun";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "kvm" ];
     packages = with pkgs; [];
   };
 
@@ -92,6 +92,59 @@
     lf
   ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      bzip2
+      cairo
+      dbus
+      expat
+      fontconfig
+      freetype
+      gdk-pixbuf
+      glib
+      glibc
+      gnome2.GConf
+      gtk2
+      gtk3
+      lcms2
+      libGL
+      libICE
+      libSM
+      libX11
+      libXScrnSaver
+      libXcomposite
+      libXcursor
+      libXdamage
+      libXext
+      libXfixes
+      libXi
+      libXinerama
+      libXrandr
+      libXrender
+      libXt
+      libXtst
+      libjpeg
+      libpng
+      libxcb
+      librsvg
+      mesa
+      nss
+      openssl
+      orc
+      pango
+      pixman
+      shared-mime-info
+      libxshmfence
+      zlib
+    ];
+  };
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
