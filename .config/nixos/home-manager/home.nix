@@ -55,6 +55,7 @@
       PROMPT_COMMAND='PS1_CMD1=$(git branch --show-current 2>/dev/null)'; PS1='\u@\h in  NixOS at ''${PS1_CMD1} \w \n󰘍 \\$ '
       alias rebuild='sudo nixos-rebuild switch --flake /home/calimuun/.config/nixos#novac'
       alias rebuild_home='home-manager switch --flake /home/calimuun/.config/nixos/home-manager#calimuun'
+      export PATH="$HOME/Pessoal/Scripts:$PATH"
       
       export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent"
       if ! ssh-add -l | grep -q "$HOME/Pessoal/Prog/SSH/GitHub/ssh_github"; then

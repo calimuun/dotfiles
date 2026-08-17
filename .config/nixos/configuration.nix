@@ -90,6 +90,8 @@
     killall
     neovim
     lf
+    zip
+    unzip
   ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
@@ -134,7 +136,12 @@
       libpng
       libxcb
       librsvg
+      libpulseaudio
+      libdrm
+      libxkbfile
+      libbsd
       mesa
+      nspr
       nss
       openssl
       orc
@@ -143,6 +150,10 @@
       shared-mime-info
       libxshmfence
       zlib
+      SDL2
+      libGLU
+      libxkbcommon
+      icu
     ];
   };
 
@@ -161,7 +172,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --asterisks --user-menu --remember --power-shutdown 'systemctl poweroff' --power-reboot 'systemctl reboot' --cmd start-hyprland";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --asterisks --user-menu --remember --power-shutdown 'systemctl poweroff' --power-reboot 'systemctl reboot' --cmd 'start-hyprland -- --config /home/calimuun/.config/hypr/hyprland.lua'";
         user = "greeter";
       };
     };
