@@ -22,6 +22,8 @@
     stow
     openjdk25
     keepassxc
+    libappindicator
+    libappindicator-gtk3
   ];
 
   programs.ssh = {
