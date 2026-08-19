@@ -15,7 +15,7 @@ Row {
         model: Hyprland.workspaces.values.filter(w => w || w.id === Hyprland.focusedWorkspace.id)
 
         Text {
-            property var ws: modelData // model data é usar os dados davariável de controle do loop for
+            property var ws: modelData // model data é usar os dados da variável de controle
 
             text: ws.id
             color: (Hyprland.focusedWorkspace.id === ws.id) ? selectedColor : unselectedColor

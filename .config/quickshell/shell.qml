@@ -14,12 +14,12 @@ PanelWindow {
     property color secondaryColor: "#7aa2f7"
 
     property string fontFamily: "JetBrainsMono Nerd Font"
-    property int fontSize: 15
+    property int fontSize: 18
 
     anchors.top: true
     anchors.left: true
     anchors.right: true
-    implicitHeight: 34
+    implicitHeight: 40
     color: root.backgroundColor
 
     RowLayout {
@@ -34,16 +34,15 @@ PanelWindow {
         }
 
         Rectangle { width: 2; height: 20; color: root.dividerColor }
+
         Item { Layout.fillWidth: true }
 
-        Text {
-            text: Hyprland.activeToplevel.title
-            color: root.secondaryColor
+        Rectangle { width: 2; height: 20; color: root.dividerColor }
 
-            font { family: root.fontFamily; pixelSize: root.fontSize; bold: true }
+        Tray {
+            primaryColor: root.primaryColor
+            fontFamily: root.fontFamily
         }
-
-        Item { Layout.fillWidth: true }
 
         Rectangle { width: 2; height: 20; color: root.dividerColor }
 
