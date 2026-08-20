@@ -1,5 +1,6 @@
 import Quickshell.Services.SystemTray
 import Quickshell.Widgets
+import Quickshell
 import QtQuick
 
 Row {
@@ -20,19 +21,35 @@ Row {
             implicitSize: 24
 
             MouseArea {
+                id: mouseArea
                 anchors.fill: parent
+                acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MiddleButton
+
                 onClicked: (mouse) => {
                     if (mouse.button == Qt.RightButton) {
-                        const win = parent.window
-                        const pos = parent.mapToItem(win.contentItem, mouse.x, mouse.y)
-            
-                        item.display(win, pos.x, pos.y)
-                    } else {
+                        menuAnchor.open()
+                    } else if (mouse.button == Qt.LeftButton) {
                         item.activate()
+                    } else if (mouse.button == Qt.MiddleButton) {
+                        item.secondaryActivate()
+                    }
+                }
+
+                QsMenuAnchor {
+                    id: menuAnchor
+                    menu: item.menu
+
+                    anchor.window: mouseArea.QsWindow.window
+                    anchor.adjustment: PopupAdjustment.Flip
+
+                    anchor.onAnchoring: {
+                        const window = mouseArea.QsWindow.window
+                        const widgetRect = window.contentItem.mapFromItem(mouseArea, 0, mouseArea.height, mouseArea.width, mouseArea.height)
+
+                        menuAnchor.anchor.rect = widgetRect
                     }
                 }
             }
         }
     }
-
 }
