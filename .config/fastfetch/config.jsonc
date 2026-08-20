@@ -1,0 +1,68 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+  "logo": {
+    "type": "file",
+    "source": "~/.config/fastfetch/ascii.txt",
+    "color": {
+      "1" : "38;2;225;214;166"
+    }
+  },
+  "display": {
+    "separator": "  \ue602  ",
+    "color": {
+      "keys": "38;2;110;180;195"
+    }
+  },
+  "modules": [
+    {
+      "type": "os",
+      "key": "\uf313"
+    },
+    {
+      "type": "host",
+      "key": "\udb82\udeab"
+    },
+    {
+      "type": "kernel",
+      "key": "\uebc6"
+    },
+    {
+      "type": "uptime",
+      "key": "\udb82\udd01"
+    },
+    {
+      "type": "packages",
+      "key": "\ueb29"
+    },
+    {
+      "type": "display",
+      "key": "\udb80\udf79"
+    },
+    {
+      "type": "wm",
+      "key": "\uf2d0"
+    },
+    {
+      "type": "cpu",
+      "key": "\uf4bc"
+    },
+    {
+      "type": "gpu",
+      "key": "\udb84\udfb4"
+    },
+    {
+      "type": "memory",
+      "key": "\uefc5"
+    },
+    {
+      "type": "swap",
+      "key": "\udb80\udf5b"
+    },
+    {
+      "type": "disk",
+      "key": "\udb80\udeca"
+    },
+    "break",
+    "colors"
+  ]
+}

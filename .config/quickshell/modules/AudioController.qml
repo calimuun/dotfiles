@@ -50,6 +50,7 @@ Row {
 			font {
 				pixelSize: fontSize
 				family: fontFamily
+				bold: true
 			}
 
 			horizontalAlignment: Text.AlignHCenter

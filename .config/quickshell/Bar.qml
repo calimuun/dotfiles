@@ -8,10 +8,10 @@ import "modules"
 PanelWindow {
     id: root
 
-    property color backgroundColor: "#1a1b26"
-    property color dividerColor: "#444b6a"
-    property color primaryColor: "#0db9d7"
-    property color secondaryColor: "#7aa2f7"
+    property color backgroundColor: "#201f1d"
+    property color dividerColor: "#565c3a"
+    property color primaryColor: "#e1d6a6"
+    property color secondaryColor: "#6eb4c3"
 
     property string fontFamily: "JetBrainsMono Nerd Font"
     property int fontSize: 18
@@ -37,27 +37,27 @@ PanelWindow {
 
         Item { Layout.fillWidth: true }
 
+        Clock {
+            textColor: root.primaryColor
+            fontFamily: root.fontFamily
+            fontSize: root.fontSize
+        }
+
+        Item { Layout.fillWidth: true }
+
+        Rectangle { width: 2; height: 20; color: root.dividerColor }
+
+        AudioController {
+            textColor: root.primaryColor
+            fontFamily: root.fontFamily
+            fontSize: root.fontSize
+        }
+
         Rectangle { width: 2; height: 20; color: root.dividerColor }
 
         Tray {
             primaryColor: root.primaryColor
             fontFamily: root.fontFamily
-        }
-
-        Rectangle { width: 2; height: 20; color: root.dividerColor }
-
-        AudioController {
-            textColor: root.secondaryColor
-            fontFamily: root.fontFamily
-            fontSize: root.fontSize
-        }
-
-        Rectangle { width: 2; height: 20; color: root.dividerColor }
-
-        Clock {
-            textColor: root.secondaryColor
-            fontFamily: root.fontFamily
-            fontSize: root.fontSize
         }
     }
 }

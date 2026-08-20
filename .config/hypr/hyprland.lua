@@ -14,22 +14,22 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("qs")
 end)
 
+-- Theme colors
+local primaryColor = "#e1d6a6"
+
 -- Default programs
 local terminal = "kitty"
-local fileManager = "lf"
+local fileManager = "thunar"
 local menu = "wofi --show drun"
 
 -- Environment variables
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
-
 hl.env("XCURSOR_THEME", "miku-cursor-linux")
 hl.env("HYPRCURSOR_THEME", "miku-cursor-linux")
 
--- Input configs
--- https://wiki.hyprland.org/Configuring/Variables/#input
-
 hl.config({
+    -- https://wiki.hyprland.org/Configuring/Variables/#input
     input = {
         kb_layout = "br",
         kb_variant = "abnt2",
@@ -48,49 +48,23 @@ hl.config({
     general = {
         gaps_in = 5,
         gaps_out = 10,
-        border_size = 1,
+        border_size = 10,
         col = {
-            active_border = "rgb(18,18,18)",
-            inactive_border = "rgb(18,18,18)",
+            active_border = primaryColor,
+            inactive_border = primaryColor,
         },
         resize_on_border = true,
         layout = "dwindle",
 
-        -- https://wiki.hyprland.org/Configuring/Tearing/
+        -- https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/
         allow_tearing = false,
     },
     
     decoration = {
-        rounding = 12,
         active_opacity = 1.0,
-        inactive_opacity = 1,
-        
-        shadow = {
-            enabled = true,
-            range = 16,
-            render_power = 5,
-            color = "rgba(0,0,0,0.35)",
-        },
-        
-        -- Transparent Window Blur
-        --blur = {
-            --enabled = true,
-            --new_optimizations = true,
-            --size = 2,
-            --passes = 3,
-            --vibrancy = 0.1696,
-        --},
+        inactive_opacity = 0.9,
     },
-    -- https://wiki.hyprland.org/Configuring/Dwindle-Layout/
-    dwindle = {
-        -- pseudotile = true deprecated Hyprland 0.55+
-        preserve_split = true,
-    },
-    -- https://wiki.hyprland.org/Configuring/Master-Layout/
-    master = {
-        new_status = "master",
-    },
-
+    
     misc = {
         force_default_wallpaper = 0,
         disable_splash_rendering = true,
@@ -137,6 +111,7 @@ hl.animation({
     bezier = "default",
 })
 
+-- Keybinds
 local mainMod = "SUPER"
 
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
@@ -171,9 +146,10 @@ hl.bind(mainMod .. " + SHIFT + 8", hl.dsp.window.move({ workspace = 8 }))
 hl.bind(mainMod .. " + SHIFT + 9", hl.dsp.window.move({ workspace = 9 }))
 hl.bind(mainMod .. " + SHIFT + 0", hl.dsp.window.move({ workspace = 10 }))
 
-hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag())
-hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize())
+hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag()) -- left click
+hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize()) -- right click
 
+-- Window rules
 hl.window_rule({
     name = "windowrule-1",
     match = {
