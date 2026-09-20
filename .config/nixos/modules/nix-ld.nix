@@ -16,7 +16,6 @@
       gtk2
       gtk3
       lcms2
-      libGL
       libICE
       libSM
       libX11
@@ -40,7 +39,7 @@
       libdrm
       libxkbfile
       libbsd
-      mesa
+      #mesa
       nspr
       nss
       openssl
@@ -55,6 +54,8 @@
       libxkbcommon
       icu
       gsettings-desktop-schemas
+      vulkan-loader
+      libgbm
     ];
   };
 }

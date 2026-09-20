@@ -76,7 +76,6 @@
       PROMPT_COMMAND='PS1_CMD1=$(git branch --show-current 2>/dev/null)'; PS1='\n\u@\h in  NixOS at ''${PS1_CMD1} \w \n󰘍 \\$ '
       alias rebuild='sudo nixos-rebuild switch --flake "$HOME/Pessoal/dotfiles/.config/nixos#novac"'
       export PATH="$HOME/Pessoal/Scripts:$PATH"
-      export LD_LIBRARY_PATH="${pkgs.openjfx}/lib:$LD_LIBRARY_PATH"
 
       fastfetch
     '';
