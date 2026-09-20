@@ -9,23 +9,22 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
-  let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-  in {
+  outputs = { self, nixpkgs, home-manager, ... }: {
     nixosConfigurations.novac = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+
       modules = [
         ./configuration.nix
         home-manager.nixosModules.home-manager
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.calimuun = import ./home-manager/home.nix; 
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+
+            users.calimuun = ./home-manager/home.nix; 
+          };
         }
       ];
     };
   };
-
 }

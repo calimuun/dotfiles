@@ -7,6 +7,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./modules/nix-ld.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -26,7 +27,6 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "novac"; # Define your hostname.
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   hardware.graphics = {
     enable = true;
@@ -92,16 +92,12 @@
   environment.systemPackages = with pkgs; [
     firefox
     git
-    hyprland
     hyprpaper
     hyprpolkitagent
-    xdg-desktop-portal-hyprland
-    xdg-desktop-portal-gtk
     wofi
     kitty
     quickshell
     pavucontrol
-    home-manager
     killall
     neovim
     lf
@@ -110,70 +106,28 @@
     thunar
     gvfs
     qimgv
+    vlc
   ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+    ];
+  };
 
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
   };
 
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      bzip2
-      cairo
-      dbus
-      expat
-      fontconfig
-      freetype
-      gdk-pixbuf
-      glib
-      glibc
-      gnome2.GConf
-      gtk2
-      gtk3
-      lcms2
-      libGL
-      libICE
-      libSM
-      libX11
-      libXScrnSaver
-      libXcomposite
-      libXcursor
-      libXdamage
-      libXext
-      libXfixes
-      libXi
-      libXinerama
-      libXrandr
-      libXrender
-      libXt
-      libXtst
-      libjpeg
-      libpng
-      libxcb
-      librsvg
-      libpulseaudio
-      libdrm
-      libxkbfile
-      libbsd
-      mesa
-      nspr
-      nss
-      openssl
-      orc
-      pango
-      pixman
-      shared-mime-info
-      libxshmfence
-      zlib
-      SDL2
-      libGLU
-      libxkbcommon
-      icu
-    ];
-  };
+  programs.steam.enable = true;
+
+  environment.sessionVariables.XDG_DATA_DIRS = [
+    "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}"
+    "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
+  ];
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
@@ -197,6 +151,11 @@
   };
 
   services.dbus.enable = true;
+
+  services.gvfs.enable = true;
+
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "calimuun" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
