@@ -12,7 +12,6 @@
     syncthing
     localsend
     vesktop
-    obs-studio
     nwg-look
     vscodium
     nodejs
@@ -25,7 +24,6 @@
     openjfx
     qbittorrent
     unrar-free
-    joplin-desktop
   ];
 
   programs.ssh = {
@@ -54,6 +52,13 @@
       };
     };
 
+  };
+
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      obs-pipewire-audio-capture
+    ];
   };
 
   services.ssh-agent.enable = true;

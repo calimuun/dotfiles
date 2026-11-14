@@ -39,7 +39,6 @@
       libdrm
       libxkbfile
       libbsd
-      #mesa
       nspr
       nss
       openssl
